@@ -30,6 +30,9 @@ from .forms import (
 )
 from .models import Activation
 
+import logging
+
+logger = logging.getLogger(__name__)
 
 class GuestOnlyView(View):
     def dispatch(self, request, *args, **kwargs):
@@ -130,6 +133,8 @@ class SignUpView(GuestOnlyView, FormView):
             login(request, user)
 
             messages.success(request, _('You are successfully signed up!'))
+
+        logger.info(f"New account created: {user.username}")
 
         return redirect('index')
 
