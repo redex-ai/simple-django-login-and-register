@@ -7,10 +7,15 @@
 
     <h4>{% trans 'Change profile' %}</h4>
 
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
 
         {% csrf_token %}
         {% bootstrap_form form %}
+
+        <div class="form-group">
+            <label for="{{ form.profile_picture.id_for_label }}" class="col-form-label">{% trans 'Profile Picture' %}</label>
+            {{ form.profile_picture }}
+        </div>
 
         <button class="btn btn-success">{% trans 'Change' %}</button>
 
