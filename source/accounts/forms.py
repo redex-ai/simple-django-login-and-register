@@ -191,6 +191,7 @@ class RestorePasswordViaEmailOrUsernameForm(EmailOrUsernameForm):
 class ChangeProfileForm(forms.Form):
     first_name = forms.CharField(label=_('First name'), max_length=30, required=False)
     last_name = forms.CharField(label=_('Last name'), max_length=150, required=False)
+    profile_picture = forms.ImageField(label=_('Profile Picture'), required=False)
 
 
 class ChangeEmailForm(forms.Form):
