@@ -220,6 +220,11 @@ class ChangeProfileView(LoginRequiredMixin, FormView):
         user = self.request.user
         user.first_name = form.cleaned_data['first_name']
         user.last_name = form.cleaned_data['last_name']
+        
+        # Handle image file
+        if 'image' in self.request.FILES:
+            user.profile_picture = self.request.FILES['image']
+        
         user.save()
 
         messages.success(self.request, _('Profile data has been successfully updated.'))
