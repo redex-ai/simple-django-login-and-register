@@ -117,6 +117,7 @@ class SignUpForm(UserCreationForm):
         fields = settings.SIGN_UP_FIELDS
 
     email = forms.EmailField(label=_('Email'), help_text=_('Required. Enter an existing email address.'))
+    phone_number = forms.CharField(label=_('Phone number'), max_length=10, validators=[RegexValidator(r'^\d{10}$')])
 
     def clean_email(self):
         email = self.cleaned_data['email']
